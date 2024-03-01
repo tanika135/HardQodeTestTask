@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponse, HttpRequest
 
-# Create your views here.
+
+def product_index(request):
+    return HttpResponse("Hello, world. You're at the product index.")
