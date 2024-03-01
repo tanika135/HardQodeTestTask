@@ -14,3 +14,16 @@ class Lesson(models.Model):
     link_to_video = models.CharField(max_length=100)
 
 
+class ProductAccess(models.Model):
+    """
+    Модель для хранения информации, есть ли доступ к продукту у пользователя
+    """
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT)
+
+
+class Group(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT)
+    name = models.CharField(max_length=100)
+
