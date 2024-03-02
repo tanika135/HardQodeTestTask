@@ -24,6 +24,13 @@ class ProductAccess(models.Model):
 
 class Group(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    user = models.ForeignKey('auth.User', on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
+
+
+class UserGroup(models.Model):
+    """
+    Содержит информацию, к какой группе относится студент
+    """
+    group = models.ForeignKey(Group, on_delete=models.PROTECT)
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT)
 
